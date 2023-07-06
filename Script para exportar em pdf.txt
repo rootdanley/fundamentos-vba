@@ -1,0 +1,44 @@
+Sub salvarPdf()
+    Dim Data As String
+    Dim ws As Worksheet
+    Dim planilhasArquivo1 As String
+    Dim planilhasArquivo2 As String
+    Dim nomeArquivo1 As String
+    Dim nomeArquivo2 As String
+    
+    Data = Format(Now(), "MM-DD-YYYY")
+    
+    ' Definir quais planilhas devem ser incluídas em cada arquivo PDF
+    planilhasArquivo1 = "January,February"
+    planilhasArquivo2 = "March,April,May,June,July,August,September,October,November,December"
+    
+    ' Nomear os arquivos de acordo com a data atual
+    nomeArquivo1 = "Dashboard " & Data & ".pdf"
+    nomeArquivo2 = "Dash " & Data & ".pdf"
+    
+    ' Exportar as planilhas do arquivo 1 para um único PDF
+    Dim planilhas1 As Variant
+    planilhas1 = Split(planilhasArquivo1, ",")
+    ThisWorkbook.Sheets(planilhas1).Select
+    ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, Filename:=nomeArquivo1
+    
+    ' Exportar as planilhas do arquivo 2 para um único PDF
+    Dim planilhas2 As Variant
+    planilhas2 = Split(planilhasArquivo2, ",")
+    ThisWorkbook.Sheets(planilhas2).Select
+    ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, Filename:=nomeArquivo2
+End Sub
+
+
+Function IsInArray(val As Variant, arr As Variant) As Boolean
+    Dim element As Variant
+    For Each element In arr
+        If element = val Then
+            IsInArray = True
+            Exit Function
+        End If
+    Next element
+    IsInArray = False
+End Function
+
+
