@@ -21,11 +21,11 @@ Private Sub VerificarDate5()
     Dim Coluna As PjField
     Dim Sucessora As PjField
     Coluna = pjTaskDate5
-    Sucessora = pjTaskText12
+    Sucessora = pjTaskResumo
     Dim verificar As Boolean
     
    For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "NA" And Tarefa.GetField(Sucessora) <> "" Then
+        If Tarefa.GetField(Coluna) = "ND" And Tarefa.GetField(Sucessora) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -35,18 +35,17 @@ Private Sub VerificarDate5()
     End If
     
 End Sub
-
 Private Sub VerificarLinhaDeBase()
 
     Dim Tarefa As Task
     Dim Coluna As PjField
     Dim Sucessora As PjField
     Coluna = pjTaskBaselineStart
-    Sucessora = pjTaskText12
+    Sucessora = pjTaskResumo
     Dim verificar As Boolean
     
     For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "NA" And Tarefa.GetField(Sucessora) <> "" Then
+        If Tarefa.GetField(Coluna) = "ND" And Tarefa.GetField(Sucessora) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -62,7 +61,6 @@ Private Sub VerificarGestor()
     Dim Coluna As PjField
     Dim Sucessora As PjField
     Coluna = pjTaskText13
-    Sucessora = pjTaskText12
     Dim verificar As Boolean
     
     For Each Tarefa In ActiveProject.Tasks
@@ -83,7 +81,6 @@ Private Sub VerificarObra()
     Dim Coluna As PjField
     Dim Sucessora As PjField
     Coluna = pjTaskText10
-    Sucessora = pjTaskText12
     Dim verificar As Boolean
     
     For Each Tarefa In ActiveProject.Tasks
@@ -142,10 +139,10 @@ Private Sub VerificarInterferencia()
     Dim Sucessora As PjField
     Coluna = pjTaskText6
     Dim verificar As Boolean
-    Sucessora = pjTaskText12
+    Sucessora = pjTaskResumo
     
     For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "" Then
+        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -156,23 +153,22 @@ Private Sub VerificarInterferencia()
     
 End Sub
 
-
 Private Sub VerificarCategoria()
-  Dim Tarefa As Task
-  Dim Coluna As PjField
-  Dim Sucessora As PjField
-  Coluna = pjTaskText3 
-  Dim verificar As Boolean
-  Sucessora = pjTaskText12
-
-  For Each Tarefa In ActiveProject.Tasks
-    If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "" then
-      Verificar = True
+    Dim Tarefa As Task
+    Dim Coluna As PjField
+    Dim Sucessora As PjField
+    Coluna = pjTaskText3
+    Dim verificar As Boolean
+    Sucessora = pjTaskResumo
+    
+    For Each Tarefa In ActiveProject.Tasks
+        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "Sim" Then
+            verificar = True
+        End If
+    Next Tarefa
+    
+    If verificar = True Then
+        MsgBox "EXISTEM CAMPOS DE CATEGORIA VAZIOS.", vbExclamation
     End If
-  Next Tarefa
-
-  If verificar = True then
-    MsgBox "EXISTEM CAMPOS DE CATEGORIA VAZIOS.", vbExclamation
-  End If
-
+    
 End Sub
