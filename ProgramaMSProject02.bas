@@ -13,7 +13,10 @@ Private Sub Avancar_Click()
     Call VerificarInterferencia
     Call VerificarCategoria
     Call VerificarResponsavel
+    Call VerificarDisciplina
+    Call VerificarLocal
     Call VerificarDataMedicao
+    Call VerificarDataReprog
     
 End Sub
 
@@ -21,13 +24,13 @@ Private Sub VerificarDate5()
 
     Dim Tarefa As Task
     Dim Coluna As PjField
-    Dim Sucessora As PjField
+    Dim resumo As PjField
     Coluna = pjTaskDate5
-    Sucessora = pjTaskResumo
+    resumo = pjTaskResumo
     Dim verificar As Boolean
     
    For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "ND" And Tarefa.GetField(Sucessora) <> "Sim" Then
+        If Tarefa.GetField(Coluna) = "ND" And Tarefa.GetField(resumo) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -42,13 +45,13 @@ Private Sub VerificarLinhaDeBase()
 
     Dim Tarefa As Task
     Dim Coluna As PjField
-    Dim Sucessora As PjField
+    Dim resumo As PjField
     Coluna = pjTaskBaselineStart
-    Sucessora = pjTaskResumo
+    resumo = pjTaskResumo
     Dim verificar As Boolean
     
     For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "ND" And Tarefa.GetField(Sucessora) <> "Sim" Then
+        If Tarefa.GetField(Coluna) = "ND" And Tarefa.GetField(resumo) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -62,14 +65,14 @@ Private Sub VerificarGestor()
 
     Dim Tarefa As Task
     Dim Coluna As PjField
-    Dim Sucessora As PjField
+    Dim resumo As PjField
     Coluna = pjTaskText13
-    Sucessora = pjTaskResumo
+    resumo = pjTaskResumo
     Dim verificar As Boolean
     
     
     For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "Sim" Then
+        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(resumo) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -82,14 +85,14 @@ End Sub
 Private Sub VerificarObra()
     Dim Tarefa As Task
     Dim Coluna As PjField
-    Dim Sucessora As PjField
+    Dim resumo As PjField
     Coluna = pjTaskText10
-    Sucessora = pjTaskText12
+    resumo = pjTaskText12
     Dim verificar As Boolean
-    Sucessora = pjTaskResumo
+    resumo = pjTaskResumo
     
     For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "Sim" Then
+        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(resumo) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -104,13 +107,13 @@ End Sub
 Private Sub VerificarCliente()
     Dim Tarefa As Task
     Dim Coluna As PjField
-    Dim Sucessora As PjField
+    Dim resumo As PjField
     Coluna = pjTaskText9
     Dim verificar As Boolean
-    Sucessora = pjTaskResumo
+    resumo = pjTaskResumo
     
     For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "Sim" Then
+        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(resumo) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -123,13 +126,13 @@ End Sub
 Private Sub VerificarRespInterferencia()
     Dim Tarefa As Task
     Dim Coluna As PjField
-    Dim Sucessora As PjField
+    Dim resumo As PjField
     Coluna = pjTaskText7
     Dim verificar As Boolean
-    Sucessora = pjTaskResumo
+    resumo = pjTaskResumo
     
     For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "Sim" Then
+        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(resumo) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -143,13 +146,13 @@ End Sub
 Private Sub VerificarInterferencia()
     Dim Tarefa As Task
     Dim Coluna As PjField
-    Dim Sucessora As PjField
+    Dim resumo As PjField
     Coluna = pjTaskText6
     Dim verificar As Boolean
-    Sucessora = pjTaskResumo
+    resumo = pjTaskResumo
     
     For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "Sim" Then
+        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(resumo) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -163,13 +166,13 @@ End Sub
 Private Sub VerificarCategoria()
     Dim Tarefa As Task
     Dim Coluna As PjField
-    Dim Sucessora As PjField
+    Dim resumo As PjField
     Coluna = pjTaskText3
     Dim verificar As Boolean
-    Sucessora = pjTaskTextResumo
+    resumo = pjTaskTextResumo
     
     For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "Sim" Then
+        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(resumo) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -183,13 +186,13 @@ End Sub
 Private Sub VerificarResponsavel()
   Dim Tarefa As Task
   Dim Coluna As PjField
-  Dim Sucessora As PjField
+  Dim resumo As PjField
   Coluna = pjTaskText4
   Dim verificar As Boolean
-  Sucessora = pjTaskResumo
+  resumo = pjTaskResumo
 
   For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "Sim" Then
+        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(resumo) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -204,13 +207,13 @@ End Sub
 Private Sub VerificarLocal()
   Dim Tarefa As Task
   Dim Coluna As PjField
-  Dim Sucessora As PjField
+  Dim resumo As PjField
   Coluna = pjTaskText2
   Dim verificar As Boolean
-  Sucessora = pjTaskResumo
+  resumo = pjTaskResumo
 
   For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "Sim" Then
+        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(resumo) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -225,13 +228,13 @@ End Sub
 Private Sub VerificarDisciplina()
 Dim Tarefa As Task
   Dim Coluna As PjField
-  Dim Sucessora As PjField
+  Dim resumo As PjField
   Coluna = pjTaskText5
   Dim verificar As Boolean
-  Sucessora = pjTaskResumo
+  resumo = pjTaskResumo
 
   For Each Tarefa In ActiveProject.Tasks
-        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(Sucessora) <> "Sim" Then
+        If Tarefa.GetField(Coluna) = "" And Tarefa.GetField(resumo) <> "Sim" Then
             verificar = True
         End If
     Next Tarefa
@@ -249,13 +252,31 @@ Private Sub VerificarDataMedicao()
   Dim verificar As Boolean
 
   For Each Tarefa In ActiveProject.Tasks
-    If Tarefa.GetField(Coluna) = "" Then 
+    If Tarefa.GetField(Coluna) = "ND" Then 
+      verificar = True
+    End if
+  Next Tarefa
+
+  If verificar = True Then
+    MsgBox "EXISTEM CAMPOS DE [O9 DATA DE MEDICAO] VAZIOS", vbExclamation
+  End If
+
+End Sub
+
+Private Sub VerificarDataReprog()
+  Dim Tarefa As Task 
+  Dim Coluna As PjField 
+  Coluna = pjTaskDate4
+  Dim verificar As Boolean
+
+  For Each Tarefa In ActiveProject.Tasks
+    If Tarefa.GetField(Coluna) = "ND" Then 
       verificar = True
     End if
   Next Tarefa
 
   If verificar = True then
-    MsgBox "EXISTEM CAMPOS DE [O9 DATA DE MEDICAO] VAZIOS", vbExclamation
+    MsgBox "EXISTEM CAMPOS DE [10 DATA REPROG] VAZIOS", vbExclamation
   End If
-
 End Sub
+
