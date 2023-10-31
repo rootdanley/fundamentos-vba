@@ -246,15 +246,15 @@ Dim Tarefa As Task
 End Sub
 
 Private Sub VerificarDataMedicao()
-  Dim Tarefa As Task 
-  Dim Coluna As PjField 
+  Dim Tarefa As Task
+  Dim Coluna As PjField
   Coluna = pjTaskDate3
   Dim verificar As Boolean
 
   For Each Tarefa In ActiveProject.Tasks
-    If Tarefa.GetField(Coluna) = "ND" Then 
+    If Tarefa.GetField(Coluna) = "ND" Then
       verificar = True
-    End if
+    End If
   Next Tarefa
 
   If verificar = True Then
@@ -264,68 +264,56 @@ Private Sub VerificarDataMedicao()
 End Sub
 
 Private Sub VerificarDataReprog()
-  Dim Tarefa As Task 
-  Dim Coluna As PjField 
+  Dim Tarefa As Task
+  Dim Coluna As PjField
   Coluna = pjTaskDate4
   Dim verificar As Boolean
 
   For Each Tarefa In ActiveProject.Tasks
-    If Tarefa.GetField(Coluna) = "ND" Then 
+    If Tarefa.GetField(Coluna) = "ND" Then
       verificar = True
-    End if
+    End If
   Next Tarefa
 
-  If verificar = True then
+  If verificar = True Then
     MsgBox "EXISTEM CAMPOS DE [10 DATA REPROG] VAZIOS", vbExclamation
   End If
 End Sub
 
-Private Sub VerificarDatas()
+Private Sub Ignorar_Click()
   Dim Tarefa As Task
   Dim ColunaDI As PjField
   Dim ColunaDF As PjField
   Dim ColunaFisicoConcluida As PjField
   ColunaDI = pjTaskDate1
   ColunaDF = pjTaskDate2
-  ColunaFisicoConcluida = pjTaskNumero1
+  ColunaFisicoConcluida = pjTaskNumber2
 
 
   Dim resumo As PjField
-  resumo = pjTaskResumo
+  resumo = pjTaskSummary
 
-  For Each Tarefa In ActiveProject.Tasks
-    If Tarefa.GetField(ColunaFisicoConcluida) == 0 and Tarefa.GetField(resumo) <> "Sim" Then
-      If Tarefa.GetField(ColunaDI) == "ND" and Tarefa.GetField(ColunaDF) == "ND" Then
-        MsgBox "DATAS OKAY", vbExclamation
-      ElseIf Tarefa.GetField(ColunaDF) <> "ND" or Tarefa.GetField(ColunaDI) <> "ND" Then
-        MsgBox "FISICO É IGUAL A 0 (VERFICIAR DATAS)", vbExclamation
+ For Each Tarefa In ActiveProject.Tasks
+    If Tarefa.GetField(resumo) <> "Sim" And (Tarefa.GetField(ColunaFisicoConcluida) >= 1 And Tarefa.GetField(ColunaFisicoConcluida) <= 99) Then
+      If Tarefa.GetField(ColunaDI) = "NA" Or Tarefa.GetField(ColunaDF) = "NA" Then
+        MsgBox "DATA I OU DATA F ESTAO VAZIAS!", vbExclamation
+      End If
+    ElseIf Tarefa.GetField(resumo) <> "Sim" And Tarefa.GetField(ColunaFisicoConcluida) = 100 Then
+      If Tarefa.GetField(ColunaDI) = "NA" And Tarefa.GetField(ColunaDF) = "NA" Then
+        MsgBox "DATAS ESTÃO VAZIAS!", vbExclamation
+      ElseIf Tarefa.GetField(ColunaDI) = "NA" Then
+        MsgBox "DATA I ESTA VAZIA E PORCENTAGEM 100!", vbExclamation
+      ElseIf Tarefa.GetField(ColunaDF) = "NA" Then
+        MsgBox "DATA F ESTA VAZIA E PORCENTAGEM 100!", vbExclamation
+      End If
+    ElseIf Tarefa.GetField(resumo) <> "Sim" And Tarefa.GetField(ColunaFisicoConcluida) = 0 Then
+      If Tarefa.GetField(ColunaDI) <> "NA" And Tarefa.GetField(ColunaDF) <> "NA" Then
+        MsgBox "DATAS ESTÃO PREENCHIDAS E PORCENTAGEM 0!", vbExclamation
+      ElseIf Tarefa.GetField(ColunaDF) <> "NA" Then
+        MsgBox "PORCENTAGEM ESTA EM 0 E DATA F PREENCHIDA", vbExclamation
+      ElseIf Tarefa.GetField(ColunaDI) <> "NA" Then
+        MsgBox "PORCENTAGEM ESTA EM 0 E DATA I PREENCHIDA", vbExclamation
       End If
     End If
-  Next Tarefa    
-End Sub
-
-
-
-    ElseIf Tarefa.GetField(ColunaFisicoConcluida) > 0 and Tarefa.GetField(ColunaFisicoConcluida) < 100 and Tarefa.GetField(resumo) <> "Sim" Then
-      
-            
-
-
-
-
-    End If
-
-
-Private Sub Ignorar_Click()
-    Dim Tarefa As Task
-    Dim Coluna As PjField
-    Dim Sucessora As PjField
-    Coluna = pjTaskDate5 ' Change to the specific date column you are interested in
-    Sucessora = pjTaskPhysicalPercentComplete
-
-    For Each Tarefa In ActiveProject.Tasks
-       
-            MsgBox "ESTABELEÇA UMA DATA DE STATUS para a tarefa: " & Tarefa.GetField(Sucessora), vbExclamation
-      
-    Next Tarefa
+  Next Tarefa
 End Sub
