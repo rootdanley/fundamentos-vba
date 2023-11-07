@@ -295,25 +295,29 @@ Private Sub Ignorar_Click()
 
  For Each Tarefa In ActiveProject.Tasks
     If Tarefa.GetField(resumo) <> "Sim" And (Tarefa.GetField(ColunaFisicoConcluida) >= 1 And Tarefa.GetField(ColunaFisicoConcluida) <= 99) Then
-      If Tarefa.GetField(ColunaDI) = "NA" Or Tarefa.GetField(ColunaDF) = "NA" Then
-        MsgBox "DATA I OU DATA F ESTAO VAZIAS!", vbExclamation
+      If Tarefa.GetField(ColunaDI) = "NA" And Tarefa.GetField(ColunaDF) = "NA" Then
+        MsgBox "DATAS ESTAO VAZIAS!", vbExclamation
+      ElseIf Tarefa.GetField(ColunaDI) = "NA" Then
+        MsgBox "DATA I ESTA VAZIA!", vbExclamation
+      ElseIf Tarefa.GetField(ColunaDF) <> "NA" Then
+        MsgBox "DATA F NÃO PODE SER PREENCHIDA POIS NÃO ESTA FINALIZADA!", vbExclamation
       End If
     ElseIf Tarefa.GetField(resumo) <> "Sim" And Tarefa.GetField(ColunaFisicoConcluida) = 100 Then
-      If Tarefa.GetField(ColunaDI) = "NA" And Tarefa.GetField(ColunaDF) = "NA" Then
+     If Tarefa.GetField(ColunaDI) = "NA" And Tarefa.GetField(ColunaDF) = "NA" Then
         MsgBox "DATAS ESTÃO VAZIAS!", vbExclamation
-      ElseIf Tarefa.GetField(ColunaDI) = "NA" Then
+     ElseIf Tarefa.GetField(ColunaDI) = "NA" Then
         MsgBox "DATA I ESTA VAZIA E PORCENTAGEM 100!", vbExclamation
-      ElseIf Tarefa.GetField(ColunaDF) = "NA" Then
+     ElseIf Tarefa.GetField(ColunaDF) = "NA" Then
         MsgBox "DATA F ESTA VAZIA E PORCENTAGEM 100!", vbExclamation
-      End If
+     End If
     ElseIf Tarefa.GetField(resumo) <> "Sim" And Tarefa.GetField(ColunaFisicoConcluida) = 0 Then
-      If Tarefa.GetField(ColunaDI) <> "NA" And Tarefa.GetField(ColunaDF) <> "NA" Then
-        MsgBox "DATAS ESTÃO PREENCHIDAS E PORCENTAGEM 0!", vbExclamation
-      ElseIf Tarefa.GetField(ColunaDF) <> "NA" Then
-        MsgBox "PORCENTAGEM ESTA EM 0 E DATA F PREENCHIDA", vbExclamation
-      ElseIf Tarefa.GetField(ColunaDI) <> "NA" Then
-        MsgBox "PORCENTAGEM ESTA EM 0 E DATA I PREENCHIDA", vbExclamation
-      End If
+        If Tarefa.GetField(ColunaDI) <> "NA" And Tarefa.GetField(ColunaDF) <> "NA" Then
+          MsgBox "DATAS ESTÃO PREENCHIDAS E PORCENTAGEM 0!", vbExclamation
+        ElseIf Tarefa.GetField(ColunaDF) <> "NA" Then
+          MsgBox "PORCENTAGEM ESTA EM 0 E DATA F PREENCHIDA", vbExclamation
+        ElseIf Tarefa.GetField(ColunaDI) <> "NA" Then
+          MsgBox "PORCENTAGEM ESTA EM 0 E DATA I PREENCHIDA", vbExclamation
+        End If
     End If
   Next Tarefa
 End Sub
