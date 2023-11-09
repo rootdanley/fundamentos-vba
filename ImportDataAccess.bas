@@ -62,3 +62,35 @@ Public Function ImportarTodasAsTabelasDoMDB()
 
     MsgBox "Todas as tabelas foram importadas com sucesso!", vbInformation
 End Function
+
+
+'04
+Public Function ImportarDados()
+    Dim reportPath As String, fileName As String
+    reportPath = "C:\Users\afromito\Pictures\Camera Roll\"
+
+    fileName = Dir(reportPath & "*.mdb;*.accdb")
+    Do While fileName <> vbNullString
+        DoCmd.TransferDatabase acImport, "Microsoft Access", reportPath & fileName, acTable, , , True
+        fileName = Dir
+    Loop
+    MsgBox "Todas as tabelas foram importadas com sucesso!", vbInformation
+	
+End Function
+
+
+' access funciona com Function 
+Public Function importarDados()
+  Dim report_path As String, file_name As String
+  report_path = "C:\Users\afromito\Desktop\teste\"
+
+  file_name = Dir(report_path & "*.accdb", vbDirectory)
+  
+  ' busca todos os arquivos xlsx
+  Do While file_name <> vbNullString
+    DoCmd.TransferDatabase acImport, , Trim(Replace(file_name, ".accdb", "")), report_path & file_name, True
+    file_name = Dir
+  Loop
+
+  MsgBox "SUCESSO!", vbInformation
+End Function
