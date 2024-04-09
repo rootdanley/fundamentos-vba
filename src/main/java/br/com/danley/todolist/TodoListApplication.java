@@ -1,14 +1,13 @@
-package br.com.danley.apitodolist;
+package br.com.danley.todolist;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiTodolistApplication {
-
+public class TodoListApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiTodolistApplication.class, args);
+		SpringApplication.run(TodoListApplication.class, args);
 	}
 
 }
