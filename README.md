@@ -10,8 +10,6 @@ Isso inclui o uso de métodos HTTP padronizados, URIs descritivas e códigos de 
 
 ---
 
-Este projeto foi criado para demonstrar a construção de uma API REST usando SpringBoot.
-
 A motivação por trás disso é compreender de como implementar boas praticas de codigo, testes, interações com o banco de dados e documentação de api.
 
 ### Estrutura do Projeto
@@ -73,17 +71,10 @@ A API inclui os seguintes endpoints:
 
 ---
 
-A documentação completa da API, com exemplos de uso, está disponível através da interface Swagger, acessível em **`/swagger-ui.html`**.
-
 ### Executando Testes
 
 ---
 
-Para executar a suíte de testes, use o comando:
-
-```
-mvn test
-```
 
 ### Criando o Projeto
 
