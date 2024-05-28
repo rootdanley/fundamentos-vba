@@ -1,20 +1,17 @@
 # TodoList API RESTFul
 
-### Descrição
+## Descrição
 Lista de Tarefas API é uma aplicação SpringBoot projetada para gerenciar um sistema de tarefas.
 Ela fornece endpoints para criar, recuperar, atualizar e deletar tarefas (**CRUD)**, e é estruturada seguindo as melhores praticas de arquitetura de software.
 Foi seguido os princípios REST para criar uma interface clara e intuitiva para a API. 
 Isso inclui o uso de métodos HTTP padronizados, URIs descritivas e códigos de status para comunicação.
 
-### Motivação
+## Motivação
 
----
 
 A motivação por trás disso é compreender de como implementar boas praticas de codigo, testes, interações com o banco de dados e documentação de api.
 
-### Estrutura do Projeto
-
----
+## Estrutura do Projeto
 
 A aplicação está organizada da seguinte forma:
 
@@ -28,9 +25,8 @@ A aplicação está organizada da seguinte forma:
 
 **resources:** Contem arquivos de configuração e migrações de banco de dados;
 
-### **Tecnologias Utilizadas**
+## **Tecnologias Utilizadas**
 
----
 
 - **Spring Boot**: Framework principal para criação da aplicação.
 - **MySQL**: Sistema de gerenciamento de banco de dados.
@@ -38,11 +34,10 @@ A aplicação está organizada da seguinte forma:
 - **ModelMapper**: Para o mapeamento entre objetos.
 - **Lombok**: Para reduzir o boilerplate.
 - **Spring Boot Test**: Para testes de integração e unidade.
+- **Swagger**: Documentação da API
 - **HTTPie:**  simplifica a realização de solicitações HTTP
 
-### Iniciando o Projeto
-
----
+## Iniciando o Projeto
 
 **Pré-requisitos**: Java 17 e Maven.
 
@@ -55,9 +50,8 @@ mvn spring-boot:run
 
 A aplicação estará disponível em **`http://localhost:8080`**.
 
-### Endpoints
+## Endpoints
 
----
 
 A API inclui os seguintes endpoints:
 
@@ -67,15 +61,22 @@ A API inclui os seguintes endpoints:
 - **`PUT /api/tasks/{id}`**: Atualiza uma tarefa existente.
 - **`DELETE /api/tasks/{id}`**: Remove uma tarefa pelo ID.
 
-### Documentação da API
+## Documentação da API
 
----
+A documentação completa da API, incluindo detalhes sobre todos os endpoints, está disponível através da interface do Swagger UI. Acesse a documentação navegando até o seguinte link quando a aplicação estiver em execução:
 
-### Executando Testes
+Swagger UI: [TodoList API Documentation](http://localhost:8080/swagger-ui/index.html#/)
 
----
+Esta documentação interativa permite que você visualize todos os endpoints, seus métodos HTTP associados, parâmetros esperados e os modelos de dados. Você também pode executar chamadas de API diretamente da interface do Swagger para testar a funcionalidade em tempo real.
+
+## Como acessar a documentação
+Certifique-se de que a aplicação está em execução seguindo as instruções na seção "Iniciando o Projeto".
+Abra um navegador e acesse o link fornecido acima.
+Explore os diferentes endpoints disponíveis e utilize as funcionalidades de testes integradas para enviar requisições diretamente do navegador.
+
+## Executando Testes
 
 
-### Criando o Projeto
+## Criando o Projeto
 
----
+
